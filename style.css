@@ -1,0 +1,374 @@
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('/helveticanowtext-black-demo.ttf') format('ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('/helveticanowtext-bold-demo.ttf') format('ttf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* --- Base Reset & Typography --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #f9fafb;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  font-family: "Helvetica Now Display", "Helvetica Neue", Helvetica, Arial, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Layout Grid --- */
+.calculator-container {
+  max-width: 64rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin: 0 auto;
+}
+
+/* --- Left Card (Inputs) --- */
+.left-card {
+  background-color: #ffffff;
+  border: 1px solid #f3f4f6;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.main-heading {
+  color: #17233d;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.75rem;
+  line-height: 1.25;
+}
+.sub-heading {
+  color: #6b7280;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+/* --- Segmented Control (SKU Buttons) --- */
+.field-group {
+  margin-bottom: 1.5rem;
+}
+.field-label {
+  display: block;
+  color: #17233d;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+.sku-toggle-container {
+  background-color: #f3f4f6;
+  padding: 0.25rem;
+  border-radius: 0.75rem;
+  display: flex;
+}
+.sku-btn {
+  flex: 1 1 0%;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  font-size: 0.875rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.sku-btn.active {
+  background-color: #ffffff;
+  color: #17233d;
+  font-weight: 600;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+.sku-btn.inactive {
+  background-color: transparent;
+  color: #6b7280;
+  font-weight: 500;
+}
+.sku-btn.inactive:hover {
+  color: #1f2937;
+}
+
+/* --- Slider Elements --- */
+.slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.slider-title {
+  color: #17233d;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.slider-value {
+  color: #17233d;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin-top: 0.375rem;
+}
+
+/* --- Range Custom Track & Thumb --- */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 9999px;
+  outline: none;
+  background: #f3f4f6;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 3px solid #004bb3;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  transition: transform 0.1s ease;
+}
+input[type="range"]::-webkit-slider-thumb:active {
+  transform: scale(1.1);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 3px solid #004bb3;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+}
+input[type="range"]::-moz-range-thumb:active {
+  transform: scale(1.1);
+}
+
+/* --- Right Card (Output Display) --- */
+.right-card {
+  background-color: #f7f9f7;
+  border-radius: 1.5rem;
+  padding: 1rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+.pricing-gradient-box {
+  background: linear-gradient(to bottom, #1c2a4a, #0d1624);
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  color: #ffffff;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+.pricing-meta {
+  color: #9ca3af;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+.price-row {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+.price-amount {
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+.price-period {
+  color: #9ca3af;
+  font-size: 0.875rem;
+  margin-left: 0.5rem;
+}
+.pricing-tagline {
+  color: #d1d5db;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+}
+
+/* --- Modern Link Button Styles --- */
+.cta-btn {
+  width: 100%;
+  background-color: #ffffff;
+  color: #0f172a;
+  font-weight: 600;
+  padding: 0.875rem 1.25rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.875rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  transition: background-color 0.2s;
+  display: block;
+  text-decoration: none;
+}
+.cta-btn:hover {
+  background-color: #f9fafb;
+}
+
+/* --- Features Checklist --- */
+.features-section {
+  padding: 0.5rem 0.75rem 1rem 0.75rem;
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.features-title {
+  color: #9ca3af;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+.features-list {
+  list-style: none;
+}
+.feature-item {
+  display: flex;
+  align-items: start;
+  gap: 0.65rem;
+  margin-bottom: 0.875rem;
+}
+.checkmark-icon {
+  width: 1.15rem;
+  height: 1.15rem;
+  color: #2563eb;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+.feature-text {
+  color: #4b5563;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* --- Dynamic Video Wrapper Block --- */
+.graphic-wrapper {
+  align-self: center;
+  margin: 0 auto;
+}
+.video-box-container {
+  width: 150px;
+  height: 220px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+.video-box-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(110%) brightness(105%);
+  mix-blend-mode: multiply;
+}
+
+.colory {
+  background: #f3f3f0;
+}
+
+/* --- BREAKPOINTS & MEDIA QUERIES --- */
+@media (max-width: 375px) {
+  body { padding: 0.5rem; }
+  .left-card { padding: 1.25rem; border-radius: 1.25rem; }
+  .right-card { border-radius: 1.25rem; }
+  .main-heading { font-size: 1.35rem; }
+  .price-amount { font-size: 1.5rem; }
+  .sku-btn { font-size: 0.75rem; padding-top: 0.5rem; padding-bottom: 0.5rem; }
+}
+
+@media (min-width: 376px) {
+  .left-card { padding: 1.75rem; }
+  .main-heading { font-size: 1.55rem; }
+  .price-amount { font-size: 1.75rem; }
+}
+
+@media (min-width: 576px) {
+  body { padding: 1.5rem; }
+  .left-card { padding: 2.25rem; border-radius: 1.75rem; }
+  .right-card { padding: 1.25rem; border-radius: 1.75rem; }
+  .pricing-gradient-box { padding: 1.75rem; border-radius: 1.5rem; }
+  .main-heading { font-size: 1.75rem; }
+  .price-amount { font-size: 2rem; }
+  .video-box-container { width: 160px; height: 250px; }
+}
+
+@media (min-width: 768px) {
+  .calculator-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+  .left-card { border-radius: 2rem; padding: 2rem; }
+  .right-card { border-radius: 2rem; padding: 1rem; }
+  .pricing-gradient-box { border-radius: 1.7rem; padding: 2rem; }
+  .main-heading { font-size: 1.65rem; }
+  .price-amount { font-size: 1.9rem; }
+  
+  .graphic-wrapper {
+    align-self: flex-start;
+    margin-top: -90px;
+    margin-right: 0.25rem;
+    margin-left: auto;
+  }
+  .video-box-container { width: 160px; height: 260px; }
+  .video-box-container video { position: relative; top: 10px; }
+}
+
+@media (min-width: 1025px) {
+  .calculator-container { max-width: 60rem; gap: 1.5rem; }
+  .left-card { padding: 2.5rem; }
+  .main-heading { font-size: 1.85rem; }
+  .price-amount { font-size: 2.15rem; }
+  .graphic-wrapper { margin-top: -110px; margin-right: 0.5rem; }
+  .video-box-container { width: 180px; height: 290px; }
+}
+
+@media (min-width: 1201px) {
+  .calculator-container { max-width: 64rem; }
+  .main-heading { font-size: 1.875rem; }
+  .price-amount { font-size: 2.25rem; }
+  .video-box-container { width: 180px; height: 300px; }
+}

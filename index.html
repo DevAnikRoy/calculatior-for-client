@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fulfillment-Kostenrechner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="calculator-container">
+    
+    <div class="left-card">
+      <div>
+        <h2 class="main-heading">
+          Kalkuliere deine <br /> Fulfillment-Kosten
+        </h2>
+        <p class="sub-heading">
+          Wähle dein monatliches Volumen und erhalte sofort eine verlässliche Preisschätzung für dein E-Commerce Business.
+        </p>
+
+        <div class="field-group">
+          <label class="field-label">Produkt-Varianten (SKUs)</label>
+          <div class="sku-toggle-container" id="skuContainer">
+            <button type="button" data-value="&lt;20" class="sku-btn active">
+              Unter 20
+            </button>
+            <button type="button" data-value="&lt;100" class="sku-btn inactive">
+              Bis zu 100
+            </button>
+            <button type="button" data-value="&gt;100" class="sku-btn inactive">
+              Über 100
+            </button>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <div class="slider-header">
+            <span class="slider-title">Monatliche Bestellungen</span>
+            <span id="ordersVal" class="slider-value">23.500</span>
+          </div>
+          <input
+            id="ordersSlider"
+            type="range"
+            min="500"
+            max="50000"
+            step="500"
+            value="23500"
+          />
+          <div class="slider-labels">
+            <span>500</span>
+            <span>50.000</span>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <div class="slider-header">
+            <span class="slider-title">Picks pro Monat</span>
+            <span id="picksVal" class="slider-value">70.000</span>
+          </div>
+          <input
+            id="picksSlider"
+            type="range"
+            min="1000"
+            max="200000"
+            step="1000"
+            value="70000"
+          />
+          <div class="slider-labels">
+            <span>1.000</span>
+            <span>200.000</span>
+          </div>
+        </div>
+
+        <div class="field-group" style="margin-bottom: 1rem;">
+          <div class="slider-header">
+            <span class="slider-title">Palettenstellplätze</span>
+            <span id="palletsVal" class="slider-value">0</span>
+          </div>
+          <input
+            id="palletsSlider"
+            type="range"
+            min="0"
+            max="1000"
+            step="1"
+            value="0"
+          />
+          <div class="slider-labels">
+            <span>0</span>
+            <span>1.000</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-card colory">
+      <div class="pricing-gradient-box">
+        <span class="pricing-meta">Geschätztes Budget</span>
+        <div class="price-row">
+          <span class="price-amount">
+            Ab <span id="totalPrice">34.000,00</span> €
+          </span>
+          <span class="price-period">/ mtl.</span>
+        </div>
+        <p class="pricing-tagline">Fair. Planbar. Keine versteckten Gebühren.</p>
+        
+        <a href="https://cam-fulfillment.webflow.io/kontakt" class="cta-btn">
+          Jetzt Angebot anfordern
+        </a>
+      </div>
+
+      <div class="features-section">
+        <div>
+          <span class="features-title">Deine Vorteile bei fly</span>
+          
+          <ul class="features-list">
+            <li class="feature-item">
+              <svg class="checkmark-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="feature-text">Kostenlose Vereinnahmung & Lagerung</span>
+            </li>
+            <li class="feature-item">
+              <svg class="checkmark-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="feature-text">Präzises Pick & Pack (99,9% fehlerfrei)</span>
+            </li>
+            <li class="feature-item">
+              <svg class="checkmark-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="feature-text">Same-Day-Versand für Bestellungen bis 14 Uhr</span>
+            </li>
+            <li class="feature-item">
+              <svg class="checkmark-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="feature-text">Professionelles Retouren-Handling</span>
+            </li>
+            <li class="feature-item">
+              <svg class="checkmark-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="feature-text">Live-Bestandsabgleich im Dashboard</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="graphic-wrapper">
+          <div class="video-box-container">
+            <video id="dynamicBoxVideo" playsinline muted loop>
+              <source id="videoSource" src="Fly-fulfillment video 1.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
